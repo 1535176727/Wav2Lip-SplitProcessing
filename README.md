@@ -51,6 +51,26 @@ Getting the weights
 | Expert Discriminator  | Weights of the expert discriminator | [Link](https://iiitaphyd-my.sharepoint.com/:u:/g/personal/radrabha_m_research_iiit_ac_in/EQRvmiZg-HRAjvI6zqN9eTEBP74KefynCwPWVmF57l-AYA?e=ZRPHKP) |
 | Visual Quality Discriminator  | Weights of the visual disc trained in a GAN setup | [Link](https://iiitaphyd-my.sharepoint.com/:u:/g/personal/radrabha_m_research_iiit_ac_in/EQVqH88dTm1HjlK11eNba5gBbn15WMS0B0EZbDBttqrqkg?e=ic0ljo) |
 
+Usage
+----------
+
+To process a video file using Wav2Lip and split it into chunks, run the following command:
+	•	--video: Path to the input video file.
+	•	--audio: Path to the input audio file.
+	•	--output: Path where the final output video will be saved.
+	•	--checkpoint_path: (Optional) Path to the Wav2Lip model checkpoint. Defaults to checkpoints/wav2lip.pth.
+	•	--chunk_duration: (Optional) Duration of each video chunk in seconds. Defaults to 5 seconds.
+
+ 1.	python main.py --video datasets/videos/trump.mp4 --audio datasets/audios/trump.wav --output output/result.mp4
+
+How It Works
+----------
+
+	1.	Video Splitting: The input video is split into 5-second chunks using FFmpeg.
+	2.	Chunk Processing: Each video chunk is processed independently by the Wav2Lip model to synchronize the lips.
+	3.	Merging: All processed chunks are merged back into a single video file using FFmpeg.
+
+
 Lip-syncing videos using the pre-trained models (Inference)
 -------
 You can lip-sync any video to any audio:
